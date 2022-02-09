@@ -1,0 +1,11 @@
+jetty:
+  context: '/myapp'
+  connectors:
+    # Jetty connector. If none is provided, Bootique creates a single HTTP connector on port 8080
+    - port: 9999
+  staticResourceBase: "src/main/webapp/"
+jettywebsocket:
+  asyncSendTimeout: "5s"
+  maxSessionIdleTimeout: "30min"
+  maxBinaryMessageBufferSize: "30kb"
+  maxTextMessageBufferSize: "45kb"
