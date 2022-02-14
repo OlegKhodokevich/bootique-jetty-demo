@@ -1,4 +1,4 @@
-package demo;
+package io.bootique.jetty.demo;
 
 import io.bootique.BaseModule;
 import io.bootique.Bootique;
@@ -24,8 +24,8 @@ public class Application extends BaseModule {
 
         // SecondWebsocket is an instance-per-peer endpoint
         binder.bind(SecondWebsocket.class);
-        JettyModule.extend(binder).useDefaultServlet();
-        JettyModule.extend(binder).addServlet(AnnotatedServlet.class);
+//        JettyModule.extend(binder).useDefaultServlet();
+        JettyModule.extend(binder).addStaticServlet("s1", "/*");
         // both can be registered to handle WebSocket connections
         JettyWebSocketModule.extend(binder)
                 .addEndpoint(FirstWebsocket.class)

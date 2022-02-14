@@ -5,15 +5,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.bootique.jetty.demo</groupId>
-  <artifactId>jetty-websocket-demo</artifactId>
+  <artifactId>jetty-cors-demo</artifactId>
   <version>2.0.RC1</version>
+  <packaging>war</packaging>
 
   <properties>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <main.class>io.bootique.jetty.demo.Application</main.class>
+    <main.class>io.bootique.jetty.io.bootique.jetty.demo.Application</main.class>
   </properties>
 
   <dependencyManagement>
@@ -31,7 +32,7 @@
   <dependencies>
     <dependency>
       <groupId>io.bootique.jetty</groupId>
-      <artifactId>bootique-jetty-websocket</artifactId>
+      <artifactId>bootique-jetty-cors</artifactId>
     </dependency>
     <dependency>
       <groupId>io.bootique.logback</groupId>
@@ -47,18 +48,17 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.9.0</version>
         </plugin>
-
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
           <version>3.2.4</version>
+
           <configuration>
             <createDependencyReducedPom>true</createDependencyReducedPom>
             <filters>
               <filter>
                 <artifact>*:*</artifact>
                 <excludes>
-<!--                  <exclude>module-info.class</exclude>-->
                   <exclude>META-INF/*.SF</exclude>
                   <exclude>META-INF/*.DSA</exclude>
                   <exclude>META-INF/*.RSA</exclude>
@@ -85,11 +85,18 @@
         </plugin>
       </plugins>
     </pluginManagement>
-
     <plugins>
+      <!--      <plugin>-->
+      <!--        <artifactId>maven-shade-plugin</artifactId>-->
+      <!--      </plugin>-->
+
+      <!-- Default 2.2 is too old, update to latest -->
       <plugin>
-        <artifactId>maven-shade-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.2.2</version>
       </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -139,7 +146,5 @@
             </configuration>
         </plugin>
     </plugins>
-
   </build>
-
 </project>

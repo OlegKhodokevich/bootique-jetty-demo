@@ -1,4 +1,4 @@
-package bootique.jetty.demo;
+package io.bootique.jetty.demo;
 
 import io.bootique.BQCoreModule;
 import io.bootique.BQRuntime;
@@ -45,7 +45,21 @@ public abstract class JettyBaseTest {
 
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-            resp.getWriter().append(OUT_CONTENT);
+            String statusString = req.getParameter("wantedStatus");
+            int status = statusString != null ? Integer.parseInt(statusString) : 200;
+
+            if(status == 200) {
+
+                String contentType = req.getParameter("wantedType");
+                if(contentType != null) {
+                    resp.setContentType(contentType);
+                }
+
+                resp.getWriter().append(OUT_CONTENT);
+            }
+            else {
+                resp.setStatus(status);
+            }
         }
     }
 }

@@ -1,0 +1,39 @@
+<html>
+<body>
+<h2>Test CROS</h2>
+
+<button name="allowed" onClick="gotoAllowed()" style="margin-right: 20px">Allowed content</button>
+
+<button name="forbidden" onClick="window.location.href='/myapp/forbidden/forbidden_page.html'" style="margin-right: 20px">Forbidden content</button>
+
+<script language = "javascript" type = "text/javascript">
+<!--      var str = document.getElementByName("allowed");-->
+<!--      -->
+<!--      function writeToScreen(message) {-->
+<!--        var pre = document.createElement("p");-->
+<!--        pre.style.wordWrap = "break-word";-->
+<!--        pre.innerHTML = message; output.appendChild(pre);-->
+<!--		}-->
+
+<!--      window.addEventListener("load", init, false);-->
+
+
+      function callOtherDomain(theUrl) {
+      const invocation = new XMLHttpRequest();
+        if (invocation) {
+          invocation.open('POST', theUrl, true);
+          invocation.withCredentials = true;
+<!--          invocation.onreadystatechange = handler;-->
+          invocation.send();
+        }
+      }
+
+      function gotoAllowed() {
+         var allowedUrl = '/myapp/allowed/allowed_page.html';
+         callOtherDomain(allowedUrl);
+<!--         window.location.href=allowedUrl;-->
+      }
+
+   </script>
+</body>
+</html>

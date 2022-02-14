@@ -1,4 +1,4 @@
-package bootique.jetty.demo;
+package io.bootique.jetty.demo;
 
 import io.bootique.BQRuntime;
 import io.bootique.jetty.server.ServerHolder;
@@ -38,5 +38,4 @@ public class JettyConfigTest extends JettyBaseTest {
         assertEquals(Response.Status.OK.getStatusCode(), r.getStatus());
         assertEquals(OUT_CONTENT, r.readEntity(String.class));
     }
-
 }

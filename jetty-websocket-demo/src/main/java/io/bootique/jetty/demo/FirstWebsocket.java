@@ -1,4 +1,4 @@
-package demo;
+package io.bootique.jetty.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,23 +18,18 @@ public class FirstWebsocket {
 
     @OnOpen
     public void onOpen(Session session) throws IOException {
-        try {
-            Thread.currentThread().sleep(1000);
-            Future<Void> deliveryProgress = session.getAsyncRemote().sendText("Hello User! I will send you 5 packages.");
-            boolean delivered = deliveryProgress.isDone();
-            LOGGER.info("The message is delivered : " + delivered);
-            for (int i = 1; i < 6; i++) {
-                Thread.currentThread().sleep(1000);
-                session.getAsyncRemote().sendText(String.valueOf(i));
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        String message = "FirstWebsocket : Hello User!";
+        Future<Void> deliveryProgress = session.getAsyncRemote().sendText(message);
+        boolean delivered = deliveryProgress.isDone();
+        LOGGER.info("The message onOpen " + message + " was delivered : " + delivered);
     }
 
     @OnMessage
     public void onMessage(Session session, String  message) throws IOException {
-        // Handle new messages
+        String answer = "FirstWebsocket : answer on message'" + message + "'";
+        Future<Void> deliveryProgress = session.getAsyncRemote().sendText(answer);
+        boolean delivered = deliveryProgress.isDone();
+        LOGGER.info("The message onMessage " + answer + "  was delivered : " + delivered);
     }
 
     @OnClose

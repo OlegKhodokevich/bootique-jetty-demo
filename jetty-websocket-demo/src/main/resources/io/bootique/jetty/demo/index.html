@@ -4,23 +4,27 @@
    <title>WebSocket Test</title>
 
    <script language = "javascript" type = "text/javascript">
-      var wsUri = "ws://172.30.224.1:9999/myapp/fw";
+      var wsUriFirst = "ws://172.30.224.1:9999/myapp/fw";
+      var wsUriSecond = "ws://172.30.224.1:9999/myapp/sw";
       var output;
 
       function init() {
          output = document.getElementById("output");
-         testWebSocket();
+         testWebSocket(wsUriFirst);
+         testWebSocket(wsUriSecond);
       }
 
-      function testWebSocket() {
-         websocket = new WebSocket(wsUri);
+      function testWebSocket(wsUri) {
+         var websocket = new WebSocket(wsUri);
 
          websocket.onopen = function(evt) {
-            writeToScreen("Сonnection established. It is waiting for welcome message...");
+		    var hello = "User: Hello server " + wsUri;
+		    websocket.send(hello);
+		    writeToScreen(hello);
          };
 
 		websocket.onmessage = function(event) {
-			writeToScreen(event.data)
+			writeToScreen(event.data);
 		};
 
 		websocket.onerror = function(error) {

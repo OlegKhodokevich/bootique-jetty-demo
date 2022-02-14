@@ -1,0 +1,34 @@
+jetty:
+  context: '/myapp'
+  connectors:
+    # Jetty connector. If none is provided, Bootique creates a single HTTP connector on port 8080
+    - port: 9989
+  staticResourceBase: "classpath:io/bootique/jetty/demo"
+  servlets:
+    first:
+      params:
+        # Note that "resourceBase" follows Bootique resource URL format
+        # and hence can be a  "classpath:" URL or a filesystem path
+        resourceBase: "classpath:io/bootique/jetty/demo"
+        pathInfoOnly: true
+
+    allowed:
+      params:
+        # Note that "resourceBase" follows Bootique resource URL format
+        # and hence can be a  "classpath:" URL or a filesystem path
+        resourceBase: "classpath:io/bootique/jetty/demo/allowed"
+        pathInfoOnly: true
+
+    forbidden:
+      params:
+        # Note that "resourceBase" follows Bootique resource URL format
+        # and hence can be a  "classpath:" URL or a filesystem path
+        resourceBase: "classpath:io/bootique/jetty/demo/forbidden"
+        pathInfoOnly: true
+
+jettycors:
+  urlPatterns:
+    - "/myapp/forbidden/*"
+  allowedOrigins: ""
+  allowedMethods: "GET,OPTIONS,HEAD"
+  allowedHeaders: "*"
