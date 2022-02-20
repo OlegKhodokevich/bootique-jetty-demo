@@ -1,39 +1,46 @@
 <html>
-<body>
-<h2>Test CROS</h2>
+   <body>
+      <h2 style="font-size: 36px; display: flex; justify-content: center; margin-top: 50px;">Test CROS</h2>
 
-<button name="allowed" onClick="gotoAllowed()" style="margin-right: 20px">Allowed content</button>
+      <div style="display: flex; justify-content: center; margin-top: 50px;">
+         <button name="allowed" onClick="gotoAllowed()" style="margin-right: 20px; font-size: 24px;">Allowed content</button>
 
-<button name="forbidden" onClick="window.location.href='/myapp/forbidden/forbidden_page.html'" style="margin-right: 20px">Forbidden content</button>
+         <button name="forbidden" onClick="gotoForbidden()" style="margin-right: 20px; font-size: 24px;">Forbidden content</button>
+      </div>
 
-<script language = "javascript" type = "text/javascript">
-<!--      var str = document.getElementByName("allowed");-->
-<!--      -->
-<!--      function writeToScreen(message) {-->
-<!--        var pre = document.createElement("p");-->
-<!--        pre.style.wordWrap = "break-word";-->
-<!--        pre.innerHTML = message; output.appendChild(pre);-->
-<!--		}-->
+      <script language = "javascript" type = "text/javascript">
 
-<!--      window.addEventListener("load", init, false);-->
+         function callOtherDomain(theUrl) {
+             const invocation = new XMLHttpRequest();
+             invocation.open('POST', theUrl, true);
+             invocation.setRequestHeader('Access-Control-Request-Method', 'POST');
 
+             invocation.withCredentials = true;
+             invocation.send();
 
-      function callOtherDomain(theUrl) {
-      const invocation = new XMLHttpRequest();
-        if (invocation) {
-          invocation.open('POST', theUrl, true);
-          invocation.withCredentials = true;
-<!--          invocation.onreadystatechange = handler;-->
-          invocation.send();
-        }
-      }
+             invocation.onload = function() {
+                 if (invocation.status != 200) {
+                   alert(`Error ${invocation.status}: ${invocation.statusText}`);
+                 } else {
+                   if (invocation.getResponseHeader('Access-Control-Allow-Origin') != null) {
+                     alert(`CORS was added to header of response.`);
+                   } else {
+                     window.location.href=theUrl;
+                   }
+                 }
+              };
+         }
 
-      function gotoAllowed() {
-         var allowedUrl = '/myapp/allowed/allowed_page.html';
-         callOtherDomain(allowedUrl);
-<!--         window.location.href=allowedUrl;-->
-      }
+         function gotoAllowed() {
+            var allowedUrl = '/myapp/allowed/allowed_page.html';
+            callOtherDomain(allowedUrl);
+         }
 
-   </script>
-</body>
+         function gotoForbidden() {
+            var allowedUrl = '/myapp/forbidden/forbidden_page.html';
+            callOtherDomain(allowedUrl);
+         }
+
+      </script>
+   </body>
 </html>

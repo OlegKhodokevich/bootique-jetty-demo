@@ -21,16 +21,14 @@ public class SecondWebsocket {
     public void onOpen(Session session) throws IOException {
         String message = "SecondWebsocket : Hello User!";
         Future<Void> deliveryProgress = session.getAsyncRemote().sendText(message);
-        boolean delivered = deliveryProgress.isDone();
-        LOGGER.info("The message onOpen " + message + " was delivered : " + delivered);
+        LOGGER.info("The message onOpen '" + message + "' was delivered : " + deliveryProgress.isDone());
     }
 
     @OnMessage
     public void onMessage(Session session, String  message) throws IOException {
         String answer = "SecondWebsocket : answer on message '" + message + "'";
         Future<Void> deliveryProgress = session.getAsyncRemote().sendText(answer);
-        boolean delivered = deliveryProgress.isDone();
-        LOGGER.info("The message onMessage " + answer + " was delivered : " + delivered);
+        LOGGER.info("The message onMessage '" + answer + "' was delivered : " + deliveryProgress.isDone());
     }
 
     @OnClose

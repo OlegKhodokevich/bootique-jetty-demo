@@ -1,6 +1,7 @@
 package io.bootique.jetty.demo;
 
 import io.bootique.BQRuntime;
+import io.bootique.jetty.junit5.JettyTester;
 import io.bootique.jetty.server.ServerHolder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ public class JettyConfigTest extends JettyBaseTest {
 
     @Test
     public void testWithBQTestFactory() {
-        io.bootique.jetty.junit5.JettyTester tester = io.bootique.jetty.junit5.JettyTester.create();
+        JettyTester tester = JettyTester.create();
         BQRuntime runtime = testFactory.app("--server").autoLoadModules().module(tester.moduleReplacingConnectors()).createRuntime();
         runtime.run();
         assertEquals(tester.getPort(), runtime.getInstance(ServerHolder.class).getConnector().getPort());

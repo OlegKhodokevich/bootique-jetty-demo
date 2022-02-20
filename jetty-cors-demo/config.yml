@@ -1,7 +1,7 @@
 jetty:
   context: '/myapp'
   connectors:
-    # Jetty connector. If none is provided, Bootique creates a single HTTP connector on port 8080
+    # Jetty connector. If none is provided, Bootique creates a single HTTP connector on port 9989
     - port: 9989
   staticResourceBase: "classpath:io/bootique/jetty/demo"
   servlets:
@@ -28,7 +28,7 @@ jetty:
 
 jettycors:
   urlPatterns:
-    - "/myapp/forbidden/*"
-  allowedOrigins: ""
-  allowedMethods: "GET,OPTIONS,HEAD"
+    - "/forbidden/*"
+  allowedOrigins: "*"
+  allowedMethods: "GET,POST,PUT,OPTIONS,HEAD"
   allowedHeaders: "*"

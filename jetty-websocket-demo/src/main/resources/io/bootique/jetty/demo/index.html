@@ -3,15 +3,34 @@
    <meta charset = "utf-8" />
    <title>WebSocket Test</title>
 
+   <h2 style="font-size: 36px; display: flex; justify-content: center; margin-top: 50px;">WebSocket Test</h2>
+
+   <div style="display: flex; justify-content: center; margin-top: 50px;">
+      <button name="First Socket" onClick="fw()" style="margin-right: 20px; font-size: 18px;">Connect to the First Socket</button>
+
+      <button name="Second Socket" onClick="sw()" style="margin-right: 20px; font-size: 18px;">Connect to the Second Socket</button>
+   </div>
+   <br>
+
    <script language = "javascript" type = "text/javascript">
-      var wsUriFirst = "ws://172.30.224.1:9999/myapp/fw";
-      var wsUriSecond = "ws://172.30.224.1:9999/myapp/sw";
       var output;
+
+      function fw() {
+         var wsUriFirst = "ws://172.27.208.1:9999/myapp/fw";
+         testWebSocket(wsUriFirst);
+         var pre = document.createElement("br");
+         output.appendChild(pre);
+      }
+
+      function sw() {
+         var wsUriSecond = "ws://172.27.208.1:9999/myapp/sw";
+         testWebSocket(wsUriSecond);
+         var pre = document.createElement("br");
+         output.appendChild(pre);
+      }
 
       function init() {
          output = document.getElementById("output");
-         testWebSocket(wsUriFirst);
-         testWebSocket(wsUriSecond);
       }
 
       function testWebSocket(wsUri) {
@@ -35,14 +54,14 @@
       function writeToScreen(message) {
         var pre = document.createElement("p");
         pre.style.wordWrap = "break-word";
-        pre.innerHTML = message; output.appendChild(pre);
-		}
+        pre.innerHTML = message;
+        output.appendChild(pre);
+	  }
 
       window.addEventListener("load", init, false);
 
    </script>
 
-   <h2>WebSocket Test</h2>
    <div id = "output"></div>
 
 </html>

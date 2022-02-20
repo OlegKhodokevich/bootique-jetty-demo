@@ -24,7 +24,6 @@ public class Application extends BaseModule {
 
         // SecondWebsocket is an instance-per-peer endpoint
         binder.bind(SecondWebsocket.class);
-//        JettyModule.extend(binder).useDefaultServlet();
         JettyModule.extend(binder).addStaticServlet("s1", "/*");
         // both can be registered to handle WebSocket connections
         JettyWebSocketModule.extend(binder)

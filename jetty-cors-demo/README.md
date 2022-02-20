@@ -1,6 +1,6 @@
 # jetty-websocket-demo
 
-A simple example that explains how to run websocket on the Jetty server and Bootique.
+A simple example that explains how to run CORS mechanism on the Jetty server and Bootique.
 
 ## Prerequisites
 
@@ -11,7 +11,7 @@ A simple example that explains how to run websocket on the Jetty server and Boot
 
 ```bash
 git clone git@github.com:bootique-examples/bootique-jetty-demo.git
-cd bootique-jetty-demo/jetty-websocket-demo
+cd bootique-jetty-demo/jetty-cors-demo
 mvn clean package
 ```
 
@@ -20,10 +20,10 @@ mvn clean package
 Check the options available in your app:
 
 ```bash
-java -jar target/jetty-websocket-demo-X.XX.jar
+java -jar target/jetty-cors-demo-X.XX.jar
     
 NAME
-      jetty-websocket-demo-X.XX.jar
+      jetty-cors-demo-X.XX.jar
 
 OPTIONS
       -c yaml_location, --config=yaml_location
@@ -42,12 +42,12 @@ OPTIONS
 Run the server with the provided `config.yml` file:
 
 ```bash    
-java -jar target/jetty-websocket-demo-X.XX.jar --server --config=config.yml
+java -jar target/jetty-cors-demo-X.XX.jar --server --config=config.yml
 ```
 
 Try opening the following URL and watch the logs:
 
-* [http://127.0.0.1:9999/myapp](http://127.0.0.1:9999/myapp)
+* [http://127.0.0.1:9989/myapp](http://127.0.0.1:9989/myapp)
 
 
 
