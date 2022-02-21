@@ -1,16 +1,16 @@
 <html>
    <body>
-      <h2 style="font-size: 36px; display: flex; justify-content: center; margin-top: 50px;">Test CROS</h2>
+      <h2 style="font-size: 36px; display: flex; justify-content: center; margin-top: 50px;">Test CORS</h2>
 
       <div style="display: flex; justify-content: center; margin-top: 50px;">
-         <button name="allowed" onClick="gotoAllowed()" style="margin-right: 20px; font-size: 24px;">Allowed content</button>
+         <button name="ordinary" onClick="gotoOrdinary()" style="margin-right: 20px; font-size: 24px;">Ordinary page</button>
 
-         <button name="forbidden" onClick="gotoForbidden()" style="margin-right: 20px; font-size: 24px;">Forbidden content</button>
+         <button name="page_with_cors" onClick="gotoPageWithCors()" style="margin-right: 20px; font-size: 24px;">Page with CORS</button>
       </div>
 
       <script language = "javascript" type = "text/javascript">
 
-         function callOtherDomain(theUrl) {
+         function callDomain(theUrl) {
              const invocation = new XMLHttpRequest();
              invocation.open('POST', theUrl, true);
              invocation.setRequestHeader('Access-Control-Request-Method', 'POST');
@@ -31,14 +31,14 @@
               };
          }
 
-         function gotoAllowed() {
-            var allowedUrl = '/myapp/allowed/allowed_page.html';
-            callOtherDomain(allowedUrl);
+         function gotoOrdinary() {
+            var ordinaryUrl = '/myapp/ordinary/ordinary_page.html';
+            callDomain(ordinaryUrl);
          }
 
-         function gotoForbidden() {
-            var allowedUrl = '/myapp/forbidden/forbidden_page.html';
-            callOtherDomain(allowedUrl);
+         function gotoPageWithCors() {
+            var pageWithCorsUrl = '/myapp/with_cors/with_cors_page.html';
+            callDomain(pageWithCorsUrl);
          }
 
       </script>

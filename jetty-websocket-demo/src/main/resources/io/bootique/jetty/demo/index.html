@@ -16,14 +16,14 @@
       var output;
 
       function fw() {
-         var wsUriFirst = "ws://172.27.208.1:9999/myapp/fw";
+         var wsUriFirst = "ws://127.0.0.1:9999/myapp/fw";
          testWebSocket(wsUriFirst);
          var pre = document.createElement("br");
          output.appendChild(pre);
       }
 
       function sw() {
-         var wsUriSecond = "ws://172.27.208.1:9999/myapp/sw";
+         var wsUriSecond = "ws://127.0.0.1:9999/myapp/sw";
          testWebSocket(wsUriSecond);
          var pre = document.createElement("br");
          output.appendChild(pre);
@@ -47,7 +47,7 @@
 		};
 
 		websocket.onerror = function(error) {
-			writeToScreen("Ошибка " + error.message);
+			writeToScreen("Error : " + error.message);
 		};
       }
 

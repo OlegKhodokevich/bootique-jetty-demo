@@ -6,6 +6,12 @@ Examples of [bootique-jetty](https://github.com/bootique/bootique-jetty) module 
 
 * [jetty-servlets-filters-demo](https://github.com/bootique-examples/bootique-jetty-demo/tree/master/jetty-servlets-filters-demo) - demo webapp with servlets and filters 
 
+* [jetty-websocket-demo](https://github.com/bootique-examples/bootique-jetty-demo/tree/master/jetty-websocket-demo) - demo webapp with websockets
+
+* [jetty-junit5-demo](https://github.com/bootique-examples/bootique-jetty-demo/tree/master/jetty-junit5-demo) - demo webapp testing with junit5
+
+* [jetty-cors-demo](https://github.com/bootique-examples/bootique-jetty-demo/tree/master/jetty-cors-demo) - demo webapp with CORS module
+
 For the examples working with the older versions of Bootique check the code on the branches:
 
 * [1.x](https://github.com/bootique-examples/bootique-jetty-demo/tree/1.x)

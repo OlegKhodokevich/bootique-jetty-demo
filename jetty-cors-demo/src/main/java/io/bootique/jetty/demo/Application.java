@@ -23,8 +23,8 @@ public class Application extends BaseModule {
         // register servlets
         JettyModule.extend(binder)
                 .addStaticServlet("first","/*")
-                .addStaticServlet("allowed","/allowed/*")
-                .addStaticServlet("forbidden","/forbidden/*");
+                .addStaticServlet("ordinary","/ordinary/*")
+                .addStaticServlet("with_cors","/with_cors/*");
     }
 
 }

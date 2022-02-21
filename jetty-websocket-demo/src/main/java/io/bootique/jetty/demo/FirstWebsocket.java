@@ -25,7 +25,7 @@ public class FirstWebsocket {
 
     @OnMessage
     public void onMessage(Session session, String  message) throws IOException {
-        String answer = "FirstWebsocket : answer on message'" + message + "'";
+        String answer = "FirstWebsocket : answer on message '" + message + "'";
         Future<Void> deliveryProgress = session.getAsyncRemote().sendText(answer);
         LOGGER.info("The message onMessage '" + answer + "'  was delivered : " + deliveryProgress.isDone());
     }

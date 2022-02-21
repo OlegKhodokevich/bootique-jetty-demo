@@ -1,4 +1,4 @@
-# jetty-websocket-demo
+# jetty-cors-demo
 
 A simple example that explains how to run CORS mechanism on the Jetty server and Bootique.
 
@@ -45,7 +45,7 @@ Run the server with the provided `config.yml` file:
 java -jar target/jetty-cors-demo-X.XX.jar --server --config=config.yml
 ```
 
-Try opening the following URL and watch the logs:
+Try opening the following URL and click different buttons:
 
 * [http://127.0.0.1:9989/myapp](http://127.0.0.1:9989/myapp)
 

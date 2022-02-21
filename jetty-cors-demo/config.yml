@@ -16,19 +16,19 @@ jetty:
       params:
         # Note that "resourceBase" follows Bootique resource URL format
         # and hence can be a  "classpath:" URL or a filesystem path
-        resourceBase: "classpath:io/bootique/jetty/demo/allowed"
+        resourceBase: "classpath:io/bootique/jetty/demo/ordinary"
         pathInfoOnly: true
 
     forbidden:
       params:
         # Note that "resourceBase" follows Bootique resource URL format
         # and hence can be a  "classpath:" URL or a filesystem path
-        resourceBase: "classpath:io/bootique/jetty/demo/forbidden"
+        resourceBase: "classpath:io/bootique/jetty/demo/with_cors"
         pathInfoOnly: true
 
 jettycors:
   urlPatterns:
-    - "/forbidden/*"
+    - "/with_cors/*"
   allowedOrigins: "*"
   allowedMethods: "GET,POST,PUT,OPTIONS,HEAD"
   allowedHeaders: "*"
